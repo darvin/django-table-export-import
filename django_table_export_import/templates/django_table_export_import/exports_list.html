@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Exports list</title>
+</head>
+<body>
+<ul>
+{% for model_name, app_and_model_id, model, import_form in models %}
+    <li>
+        {{ model_name }}
+        <a href="{% url table_export app_and_model_id.0,app_and_model_id.1,"xls" %}">xls</a>
+        <a href="{% url table_export app_and_model_id.0,app_and_model_id.1,"csv" %}">csv</a>
+
+        <form enctype="multipart/form-data" action="import_file" method="POST">
+            {% csrf_token %}
+            {{ import_form.as_p }}
+            <input type="submit" value="Submit" id="Save"/>
+
+        </form>
+    </li>
+{% endfor %}
+</ul>
+</body>
+</html>

@@ -1,0 +1,8 @@
+include AUTHORS
+include INSTALL
+include LICENSE
+include MANIFEST.in
+include README
+recursive-include docs *.txt
+recursive-include django_table_export_import/templates/django_table_export_import *.html
+
